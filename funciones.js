@@ -1,8 +1,19 @@
 function doGet() {
-  return HtmlService.createTemplateFromFile("web")
+  var html = HtmlService.createTemplateFromFile("web")
     .evaluate()
-    .setTitle("Agenda google app script");
+    .setTitle("Creacion de Tablas");
+
+  return html;
 }
-function obtenerDatosHtml(prm){
+function obtnerDatosHtml(prm) {
   return HtmlService.createHtmlOutputFromFile(prm).getContent();
+}
+
+function obtenerContactos() {
+  let aplicacion = SpreadsheetApp;
+  let hoja = aplicacion
+    .openById("1oz-CmkaDr6tnKH4aL4RgQSqoUb4r6bs-SXL30sjPOxA")
+    .getActiveSheet();
+  let contactos = hoja.getDataRange().getValues();
+  return contactos;
 }
