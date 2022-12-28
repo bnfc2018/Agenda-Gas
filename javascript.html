@@ -7,27 +7,30 @@
     let tablaHeader = document.createElement('thead')
     let cuerpoTabla = document.createElement('tbody');
     google.script.run.withSuccessHandler(function (objeto) {
-      // Creamos el cabecero
       let primeraFila = document.createElement('tr')
-      // Recorremos la primera fila del objeto(indice 0)
-      for (i = 0; i < objeto[0][i]; i++) {
+      for (i = 0; i < objeto[0].length; i++) {
         let celda = document.createElement('th');
-        celda.textContent = objeto[0][i];                                       //Asignam os el valor
-        primeraFila.appendChild(celda)                                      //Agregamos la celda a la fila  
+        celda.textContent = objeto[0][i];
+        primeraFila.appendChild(celda);
+        window.alert("La celda " + i + objeto[0][i])
       }
       tablaHeader.appendChild(primeraFila);
-      /*for (i = 0; i < objeto.length; i++) {
-        // Creamos fila 
-        let fila = document.createElement('tr');
-        for (j = 0; objeto[i].length; j++) {
+      tabla.appendChild(tablaHeader);
+      for (i = 1; i < objeto.length; i++) {
+        let fila = document.createElement("tr");
+        for (j = 0; j < objeto[i].length; j++) {
           let celda = document.createElement('td');
           celda.textContent = objeto[i][j];
-          //agregamos a la fila
+          window.alert(celda.textContent);
           fila.appendChild(celda);
         }
-        if (i == 0) { tableHeader.appendChild(fila) }
-        else { cuerpoTabla.appendChild(fila) }
-      }*/
+        cuerpoTabla.appendChild(fila);
+      }
+      tabla.appendChild(cuerpoTabla);
+
+      /**       if (i == 0) { tableHeader.appendChild(fila) }
+             else { cuerpoTabla.appendChild(fila) }
+           }*/
       /*    Array.from(objeto).forEach((filaActual, i) => {
             let fila = document.createElement('tr');
             filaActual.forEach(celdaActual => {
